@@ -1,0 +1,104 @@
+body {
+  background-color: #1a1a1a;
+  font-family: "VT323", monospace;
+  color: white;
+  position: relative;
+}
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: repeating-linear-gradient(0deg, rgba(0, 0, 0, 0.15) 0px, rgba(0, 0, 0, 0.15) 1px, transparent 1px, transparent 2px);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.NB-title {
+  font-size: 3.5rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  background: linear-gradient(180deg, #fff 0%, #c4c4c4 50%, #fff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: 2px;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.NB-select,
+.NB-input {
+  background: rgba(123, 44, 191, 0.1);
+  border: 2px solid #ff6b35;
+  color: white;
+  border-radius: 0;
+  padding: 12px;
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+}
+.NB-select:focus,
+.NB-input:focus {
+  outline: none;
+  border-color: #ff2a6d;
+  box-shadow: 0 0 10px #ff2a6d;
+  background: rgba(123, 44, 191, 0.2);
+}
+.NB-select::-moz-placeholder, .NB-input::-moz-placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+.NB-select::placeholder,
+.NB-input::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.NB-table-container {
+  background: rgba(123, 44, 191, 0.1);
+  border: 2px solid #ff6b35;
+  padding: 20px;
+  margin-top: 2rem;
+  box-shadow: 0 0 10px #ff6b35;
+}
+.NB-table-wrapper {
+  color: white;
+}
+.NB-table-wrapper thead th {
+  border-bottom: 2px solid #ff2a6d;
+  color: #05d9e8;
+  font-weight: bold;
+  text-transform: uppercase;
+  padding: 16px;
+  color: #05d9e8;
+  text-shadow: 0 0 5px rgba(5, 217, 232, 0.5), 0 0 10px rgba(5, 217, 232, 0.5), 0 0 15px rgba(5, 217, 232, 0.5);
+}
+.NB-table-wrapper td {
+  padding: 16px;
+  color: #1a1a1a;
+  border-bottom: 1px solid rgba(255, 107, 53, 0.3);
+}
+.NB-table-wrapper tbody tr {
+  transition: all 0.3s ease;
+  background: rgba(255, 255, 255, 0.9);
+}
+.NB-table-wrapper tbody tr:hover {
+  background: white;
+  transform: scale(1.01);
+}
+
+.NB-container {
+  position: relative;
+  z-index: 2;
+}
+
+@keyframes flicker {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+.NB-flicker {
+  animation: flicker 2s infinite;
+}/*# sourceMappingURL=style.css.map */

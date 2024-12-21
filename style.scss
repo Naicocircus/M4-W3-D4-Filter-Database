@@ -1,0 +1,149 @@
+// Variables - Palette Retro anni '80
+$retro-orange: #ff6b35;
+$retro-purple: #7b2cbf;
+$retro-black: #1a1a1a;
+$retro-pink: #ff2a6d;
+$retro-cyan: #05d9e8;
+$neon-glow: 0 0 10px;
+
+// Mixins
+@mixin neon-text($color) {
+  color: $color;
+  text-shadow: 
+    0 0 5px rgba($color, 0.5),
+    0 0 10px rgba($color, 0.5),
+    0 0 15px rgba($color, 0.5);
+}
+
+@mixin retro-gradient {
+  background: linear-gradient(
+    45deg,
+    $retro-purple 0%,
+    $retro-orange 100%
+  );
+}
+
+@mixin chrome-effect {
+  background: linear-gradient(
+    180deg,
+    #fff 0%,
+    #c4c4c4 50%,
+    #fff 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+// Base styles
+body {
+  background-color: $retro-black;
+  font-family: "VT323", monospace;
+  color: white;
+  position: relative;
+  
+  &::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: repeating-linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0.15) 0px,
+      rgba(0, 0, 0, 0.15) 1px,
+      transparent 1px,
+      transparent 2px
+    );
+    pointer-events: none;
+    z-index: 1;
+  }
+}
+
+// Custom components
+.NB-title {
+  font-size: 3.5rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  @include chrome-effect;
+  letter-spacing: 2px;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.NB-select,
+.NB-input {
+  background: rgba($retro-purple, 0.1);
+  border: 2px solid $retro-orange;
+  color: white;
+  border-radius: 0;
+  padding: 12px;
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+
+  &:focus {
+    outline: none;
+    border-color: $retro-pink;
+    box-shadow: $neon-glow $retro-pink;
+    background: rgba($retro-purple, 0.2);
+  }
+
+  &::placeholder {
+    color: rgba(white, 0.6);
+  }
+}
+
+.NB-table {
+  &-container {
+    background: rgba($retro-purple, 0.1);
+    border: 2px solid $retro-orange;
+    padding: 20px;
+    margin-top: 2rem;
+    box-shadow: $neon-glow $retro-orange;
+  }
+
+  &-wrapper {
+    color: white;
+
+    thead th {
+      border-bottom: 2px solid $retro-pink;
+      color: $retro-cyan;
+      font-weight: bold;
+      text-transform: uppercase;
+      padding: 16px;
+      @include neon-text($retro-cyan);
+    }
+
+    td {
+      padding: 16px;
+      color: $retro-black;
+      border-bottom: 1px solid rgba($retro-orange, 0.3);
+    }
+
+    tbody tr {
+      transition: all 0.3s ease;
+      background: rgba(white, 0.9);
+
+      &:hover {
+        background: rgba(white, 1);
+        transform: scale(1.01);
+      }
+    }
+  }
+}
+
+// Utility classes
+.NB-container {
+  position: relative;
+  z-index: 2;
+}
+
+// Animazioni
+@keyframes flicker {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.8; }
+}
+
+.NB-flicker {
+  animation: flicker 2s infinite;
+}
